@@ -55,7 +55,11 @@
 
     <div class="container">
         {% for todo in todos %}
-        <h1 class="title">{{ todo.task }}</h1>
+            {% if todo.completed == True %}
+                <span style="text-decoration: line-through">{{ todo.task }}</span>
+            {% else %}
+                <h1 class="title">{{ todo.task }}</h1>
+            {% endif %}
         {% endfor %}
     </div>
 </section>
