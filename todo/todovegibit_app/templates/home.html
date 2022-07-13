@@ -1,0 +1,63 @@
+{% extends 'base.html'  %}
+
+{% block content %}
+<section class="section">
+
+    {% if messages %}
+        {% for message in messages %}
+            <article class="message is-success">
+                <div class="message-header">
+                    <p>Nice!</p>
+                </div>
+                <div class="message-body">
+                    {{ message }}
+                </div>
+            </article>
+        {% endfor %}
+    {% endif %}
+
+    <table class="table is-hoverable is-fullwidth">
+        <thead>
+        <tr>
+            <th>Task</th>
+            <th>Completed</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        {% for todo in todos %}
+            <tr>
+                <td>
+                    {% if todo.completed == True %}
+                        <span style="text-decoration: line-through">{{ todo.task }}</span>
+                    {% else %}
+                        {{ todo.task }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if todo.completed == True %}
+                        <i class="far fa-check-circle"></i>
+                        <a href="{% url 'mark_incomplete' todo.id %}">incomplete</a> or
+                        <a href="{% url 'edit' todo.id %}">edit</a>
+                    {% else %}
+                        <i class="far fa-circle"></i>
+                        <a href="{% url 'mark_complete' todo.id %}">complete</a> or
+                        <a href="{% url 'edit' todo.id %}">edit</a>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'delete' todo.id %}">remove</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <hr>
+
+    <div class="container">
+        {% for todo in todos %}
+        <h1 class="title">{{ todo.task }}</h1>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}
