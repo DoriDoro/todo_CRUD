@@ -10,27 +10,23 @@
 <body>
 
 <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-    <div class="navbar-menu">
-        <div class="navbar-start">
-            <a class="navbar-item">Home</a>
-
-        <div class="navbar-end">
-            <div class="navbar-item">
-                <form method="post">
-                {% csrf_token %}
-                <div class="field has-addons">
-                    <div class="control">
-                        <input name="task" class="input" type="text" placeholder="Add Todo">
-                    </div>
+    <div class="navbar-brand">
+        <div class="navbar-item">
+            <form method="post">
+            {% csrf_token %}
+            <div class="field has-addons">
                 <div class="control">
-                    <button type="submit" class="button is-link">Submit</button>
+                    <input name="task" class="input" type="text" placeholder="Add Todo Item">
                 </div>
-                </div>
-                </form>
+            <div class="control">
+                <button type="submit" class="button is-link">Submit</button>
             </div>
-        </div>
+            </div>
+            </form>
         </div>
     </div>
+        
+    
 
 </nav>
     {% block content %}

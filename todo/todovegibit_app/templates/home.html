@@ -20,7 +20,7 @@
         <thead>
         <tr>
             <th>Task</th>
-            <th>Completed</th>
+            <th>Status</th>
             <th>Delete</th>
         </tr>
         </thead>
@@ -36,11 +36,11 @@
                 <td>
                     {% if todo.completed == True %}
                         <i class="far fa-check-circle"></i>
-                        <a href="{% url 'mark_incomplete' todo.id %}">incomplete</a> or
+                        <a href="{% url 'mark_incomplete' todo.id %}">completed</a> or
                         <a href="{% url 'edit' todo.id %}">edit</a>
                     {% else %}
                         <i class="far fa-circle"></i>
-                        <a href="{% url 'mark_complete' todo.id %}">complete</a> or
+                        <a href="{% url 'mark_complete' todo.id %}">incomplete</a> or
                         <a href="{% url 'edit' todo.id %}">edit</a>
                     {% endif %}
                 </td>
